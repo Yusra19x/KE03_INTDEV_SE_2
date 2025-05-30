@@ -23,6 +23,7 @@ namespace KE03_INTDEV_SE_2_Base
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IPartRepository, PartRepository>();
+            builder.Services.AddScoped<IStockRepository, StockRepository>();
 
             var app = builder.Build();
 

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Stock>
+
+<h2>Voorraad Overzicht</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Naam</th>
+            <th>Voorraad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.StockAmount</td>
+            </tr>
+        }
+    </tbody>
+</table>
