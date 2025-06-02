@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar-pastel-blue {
+    background-color: #add8e6 !important;
+    border-bottom: 3px solid #87b6d9 !important; 
+}

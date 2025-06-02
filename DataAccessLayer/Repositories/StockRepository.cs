@@ -17,9 +17,7 @@ namespace DataAccessLayer.Repositories
             _context = context;
         }
 
-        public IEnumerable<Stock> GetAllStock()
-        {
-            return _context.Products
+        public IEnumerable<Stock> GetAllStock() => _context.Products
                 .Select(p => new Stock
                 {
                     Id = p.Id,
@@ -27,7 +25,6 @@ namespace DataAccessLayer.Repositories
                     StockAmount = p.Stock
                 })
                 .ToList();
-        }
 
         public Stock GetStockByProductId(int productId)
         {
