@@ -12,20 +12,48 @@
     <h4>Product</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-3">Naam</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+        <dl class="row">
+            <dt class="col-sm-3">Naam</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
 
-        <dt class="col-sm-3">Beschrijving</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+            <dt class="col-sm-3">Beschrijving</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
 
-        <dt class="col-sm-3">Categorie</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Category)</dd>
+            <dt class="col-sm-3">Afbeelding</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Image)</dd>
 
-        <dt class="col-sm-3">Prijs</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Price)</dd>
+            <dt class="col-sm-3">Categorie</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Category)</dd>
 
-        <dt class="col-sm-3">Voorraad</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Stock)</dd>
+            <dt class="col-sm-3">Merk</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Brand)</dd>
+
+            <dt class="col-sm-3">Kleur</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Color)</dd>
+
+            <dt class="col-sm-3">Materiaal</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Material)</dd>
+
+            <dt class="col-sm-3">Gewicht (kg)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Weight)</dd>
+
+            <dt class="col-sm-3">Inkoopprijs (€)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PurchasePrice)</dd>
+
+            <dt class="col-sm-3">Verkoopprijs (€)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.SellingPrice)</dd>
+
+            <dt class="col-sm-3">BTW (%)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.VAT)</dd>
+
+            <dt class="col-sm-3">Totaalprijs (€)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Price)</dd>
+
+            <dt class="col-sm-3">Voorraad</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Stock)</dd>
+
+            <dt class="col-sm-3">Actief</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Active)</dd>
     </dl>
 
     <form asp-action="Delete">

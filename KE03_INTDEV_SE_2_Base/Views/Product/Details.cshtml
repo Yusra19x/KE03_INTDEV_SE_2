@@ -1,0 +1,59 @@
+﻿@model DataAccessLayer.Models.Product
+
+@{
+    ViewData["Title"] = "Productdetails";
+}
+
+<h1>Productdetails</h1>
+<hr />
+
+<div class="row">
+    <!-- Linkerkant: Afbeelding + beschrijving -->
+    <div class="col-md-6">
+        <div class="card">
+            <img src="~/images/@Model.Image" class="card-img-top" alt="@Model.Name" style="max-height: 400px; object-fit: cover;" />
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="text-muted">Categorie: @Model.Category</p>
+                <p class="text-muted">Merk: @Model.Brand</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rechterkant: Eigenschappen -->
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Kleur</dt>
+            <dd class="col-sm-8">@Model.Color</dd>
+
+            <dt class="col-sm-4">Materiaal</dt>
+            <dd class="col-sm-8">@Model.Material</dd>
+
+            <dt class="col-sm-4">Gewicht</dt>
+            <dd class="col-sm-8">@Model.Weight kg</dd>
+
+            <dt class="col-sm-4">Voorraad</dt>
+            <dd class="col-sm-8">@Model.Stock stuks</dd>
+
+            <dt class="col-sm-4">Inkoopprijs</dt>
+            <dd class="col-sm-8">€ @Model.PurchasePrice.ToString("0.00")</dd>
+
+            <dt class="col-sm-4">Verkoopprijs</dt>
+            <dd class="col-sm-8">€ @Model.SellingPrice.ToString("0.00")</dd>
+
+            <dt class="col-sm-4">BTW</dt>
+            <dd class="col-sm-8">@Model.VAT %</dd>
+
+            <dt class="col-sm-4">Totaalprijs</dt>
+            <dd class="col-sm-8">€ @Model.Price.ToString("0.00")</dd>
+
+            <dt class="col-sm-4">Actief</dt>
+            <dd class="col-sm-8">@(Model.Active ? "Ja" : "Nee")</dd>
+        </dl>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">Bewerken</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger me-2">Verwijderen</a>
+        <a asp-action="Index" class="btn btn-secondary">Terug naar overzicht</a>
+    </div>
+</div>

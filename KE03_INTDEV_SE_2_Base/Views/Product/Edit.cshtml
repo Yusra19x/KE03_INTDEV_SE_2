@@ -1,0 +1,105 @@
+﻿@model DataAccessLayer.Models.Product
+
+@{
+    ViewData["Title"] = "Product bewerken";
+}
+
+<h1>Product bewerken</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label for="Name">Naam</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Beschrijving</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Image">Afbeelding (optioneel)</label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Category">Categorie</label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Brand">Merk</label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Color">Kleur</label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Material">Materiaal</label>
+                <input asp-for="Material" class="form-control" />
+                <span asp-validation-for="Material" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Weight">Gewicht (kg)</label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="PurchasePrice">Inkoopprijs (€)</label>
+                <input asp-for="PurchasePrice" class="form-control" />
+                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="SellingPrice">Verkoopprijs (€)</label>
+                <input asp-for="SellingPrice" class="form-control" />
+                <span asp-validation-for="SellingPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="VAT">BTW (%)</label>
+                <input asp-for="VAT" class="form-control" />
+                <span asp-validation-for="VAT" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Stock">Voorraad</label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mt-2">
+                <input class="form-check-input" asp-for="Active" />
+                <label class="form-check-label" asp-for="Active">Actief</label>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary ms-2">Annuleren</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
