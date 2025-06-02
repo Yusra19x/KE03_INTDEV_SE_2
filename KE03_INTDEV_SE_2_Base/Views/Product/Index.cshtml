@@ -2,6 +2,10 @@
 
 <h2>Producten</h2>
 
+<a asp-action="Create" class="btn btn-success mb-3" title="Nieuw product">
+    <i class="bi bi-plus-lg"></i> Nieuw product
+</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -10,6 +14,7 @@
             <th>Merk</th>
             <th>Prijs (€)</th>
             <th>Voorraad</th>
+            <th class="text-end">Beheren</th> 
         </tr>
     </thead>
     <tbody>
@@ -21,6 +26,17 @@
                 <td>@p.Brand</td>
                 <td>@(p.Price.ToString("0.00"))</td>
                 <td>@p.Stock</td>
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-outline-secondary btn-sm me-1" title="Details">
+                        <i class="bi bi-info-circle"></i>
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-outline-secondary btn-sm me-1" title="Bewerken">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-outline-secondary btn-sm" title="Verwijderen">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>
