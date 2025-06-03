@@ -61,12 +61,15 @@
     <tbody>
         @foreach (var p in Model)
         {
-            <tr>
+                <tr class="@(p.Stock <= 5 ? "table-danger" : "")">
                 <td>@p.Name</td>
                 <td>@p.Category</td>
                 <td>@p.Brand</td>
                 <td>@(p.Price.ToString("0.00"))</td>
-                <td>@p.Stock</td>
+                
+                <td class="@(p.Stock <= 5 ? "text-danger fw-bold" : "")">
+                    @Html.Raw(p.Stock + (p.Stock <= 5 ? "<span class='ms-1 text-danger fw-bold'>(Laag voorraad)</span>" : ""))
+                </td>
                 <td class="text-end">
                     <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-outline-secondary btn-sm me-1" title="Details">
                         <i class="bi bi-info-circle"></i>
