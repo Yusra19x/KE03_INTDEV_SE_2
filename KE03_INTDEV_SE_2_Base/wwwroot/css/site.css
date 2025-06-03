@@ -1,3 +1,84 @@
+:root{
+    --bg-color: white;
+    --text-color: black;
+    --link-color: black;
+    --link-hover-color: black;
+}
+
+.darkmode {
+    --bg-color: black;
+    --text-color: white;
+    --link-color: white;
+    --link-hover-color: white;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin-bottom: 60px;
+}
+
+.darkmode .navbar-pastel-blue {
+    background-color: midnightblue !important;
+    border-bottom: 3px solid midnightblue !important;
+}
+
+.darkmode .nav-link{
+    color: var(--link-color) !important;
+}
+
+table, th, td {
+    color: var(--text-color);
+    background-color: transparent;
+}
+
+.darkmode .card {
+    background-color: black;
+    border-color: dimgray;
+}
+
+.darkmode .card-body {
+    color: var(--text-color);
+}
+
+.darkmode .text-muted {
+    color: #aaa !important;
+}
+
+.darkmode th a {
+    color: white;
+}
+
+.darkmode th a:hover {
+    color: white;
+}
+
+#theme-switch{
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+}
+
+#theme-switch svg:last-child{
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child{
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child{
+    display: block;
+}
+
 html {
   font-size: 14px;
 }
@@ -28,12 +109,12 @@ body {
 
 th a {
     text-decoration: none;
-    color: black;
+    color: var(--link-color);
     font-weight: 600;
 }
 
 th a:hover {
-        color: darkslategray;
+        color: var(--link-hover-color);
 }
 
 th a::after {
@@ -42,7 +123,7 @@ th a::after {
 
 th a {
     text-decoration: none;
-    color: inherit;
+    color: var(--lick-color);
     font-weight: bold;
 }
 
