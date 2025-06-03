@@ -1,19 +1,60 @@
 ﻿@model IEnumerable<DataAccessLayer.Models.Product>
 
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/site.css" />
+}
+
 <h2>Producten</h2>
 
 <a asp-action="Create" class="btn btn-success mb-3" title="Nieuw product">
     <i class="bi bi-plus-lg"></i> Nieuw product
 </a>
 
+@{
+    string currentSort = ViewBag.CurrentSort as string ?? "Name";
+    string currentDir = ViewBag.CurrentDir as string ?? "asc";
+
+    Func<string, string> sortIcon = sort =>
+    {
+        if (sort != currentSort) return "";
+        return currentDir == "asc" ? "▲" : "▼";
+    };
+
+    Func<string, string> nextDir = sort =>
+    {
+        return sort == currentSort && currentDir == "asc" ? "desc" : "asc";
+    };
+}
+
 <table class="table">
     <thead>
         <tr>
-            <th>Naam</th>
-            <th>Categorie</th>
-            <th>Merk</th>
-            <th>Prijs (€)</th>
-            <th>Voorraad</th>
+            <th>
+                <a asp-action="Index" asp-route-sort="Name" asp-route-dir="@nextDir("Name")">
+                    Naam @sortIcon("Name")
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="Category" asp-route-dir="@nextDir("Category")">
+                    Categorie @sortIcon("Category")
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="Brand" asp-route-dir="@nextDir("Brand")">
+                    Merk @sortIcon("Brand")
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="Price" asp-route-dir="@nextDir("Price")">
+                    Prijs @sortIcon("Price")
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="Stock" asp-route-dir="@nextDir("Stock")">
+                    Voorraad @sortIcon("Stock")
+                </a>
+            </th>
             <th class="text-end">Beheren</th> 
         </tr>
     </thead>

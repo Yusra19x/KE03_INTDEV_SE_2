@@ -15,14 +15,53 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
                 _context = context;
             }
 
-            // GET: Product
-            public async Task<IActionResult> Index()
+        // GET: Product
+        public async Task<IActionResult> Index(string sort = "Name", string dir = "asc")
+        {
+            var productsQuery = _context.Products.AsQueryable();
+
+            if (sort == "Price")
             {
-                return View(await _context.Products.ToListAsync());
+                var productsList = await productsQuery.ToListAsync();
+
+                productsList = dir == "desc"
+                    ? productsList.OrderByDescending(p => p.Price).ToList()
+                    : productsList.OrderBy(p => p.Price).ToList();
+
+                ViewBag.CurrentSort = sort;
+                ViewBag.CurrentDir = dir;
+                return View(productsList);
             }
 
-            // GET: Product/Details/5
-            public async Task<IActionResult> Details(int? id)
+            productsQuery = (sort, dir) switch
+            {
+                ("Name", "desc") => productsQuery.OrderByDescending(p => p.Name),
+                ("Name", _) => productsQuery.OrderBy(p => p.Name),
+
+                ("Stock", "desc") => productsQuery.OrderByDescending(p => p.Stock),
+                ("Stock", _) => productsQuery.OrderBy(p => p.Stock),
+
+                ("Brand", "desc") => productsQuery.OrderByDescending(p => p.Brand),
+                ("Brand", _) => productsQuery.OrderBy(p => p.Brand),
+
+                ("Weight", "desc") => productsQuery.OrderByDescending(p => p.Weight),
+                ("Weight", _) => productsQuery.OrderBy(p => p.Weight),
+
+                ("Category", "desc") => productsQuery.OrderByDescending(p => p.Category),
+                ("Category", _) => productsQuery.OrderBy(p => p.Category),
+
+                _ => productsQuery.OrderBy(p => p.Name)
+            };
+
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentDir = dir;
+
+            return View(await productsQuery.ToListAsync());
+        }
+
+
+        // GET: Product/Details/5
+        public async Task<IActionResult> Details(int? id)
             {
                 if (id == null) return NotFound();
 
