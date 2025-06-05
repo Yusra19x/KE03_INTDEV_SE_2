@@ -6,6 +6,53 @@
 
 <h1>Index</h1>
 
+<form asp-action="Index" method="get">
+    <div style="position: relative;">
+        <button type="button" onclick="toggleDropdown()" style="padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 4px;">Filter</button>
+
+        <div id="filterDropdown" style="display:none; position:absolute; top:40px; left:0; background:#fff; border:1px solid #ccc; padding:15px; z-index:1000; min-width:300px; color: black;">
+            <div>
+                <strong>Adres bevat:</strong><br />
+                <input type="text" name="addressFilter" value="@ViewData["CurrentAddress"]" style="width: 100%; margin-bottom: 10px;" />
+            </div>
+
+            <div>
+                <strong>Sorteren op naam:</strong><br />
+                @{
+                    var sortValue = ViewData["NameSortParm"]?.ToString();
+                }
+                <label><input type="radio" name="nameSort" value="" @(string.IsNullOrEmpty(sortValue) ? "checked" : "") /> A-Z (Oplopend)</label><br />
+                <label><input type="radio" name="nameSort" value="desc" @(sortValue == "desc" ? "checked" : "") /> Z-A (Aflopend)</label>
+            </div>
+
+            <br />
+            <button type="submit" style="padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 4px;">Toepassen</button>
+        </div>
+    </div>
+</form>
+
+
+
+<script>
+    function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+
+<script>
+    function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+
+<table class="table">
+    ...
+</table>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

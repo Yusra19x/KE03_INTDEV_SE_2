@@ -19,11 +19,33 @@ namespace KE03_INTDEV_SE_2_Base.Controllers
             _context = context;
         }
 
-        // GET: Customers
-        public async Task<IActionResult> Index()
+        // Filter systeem Camiel
+        public async Task<IActionResult> Index(string nameSort, string addressFilter)
         {
-            return View(await _context.Customers.ToListAsync());
+            // Geef de gekozen sortering en filter terug aan de View
+            ViewData["NameSortParm"] = nameSort;
+            ViewData["CurrentAddress"] = addressFilter;
+
+            // Haal alle klanten op
+            var customers = _context.Customers.AsQueryable();
+
+            // Filter op adres 
+            if (!string.IsNullOrEmpty(addressFilter))
+            {
+                string filter = addressFilter.ToLower();
+                customers = customers.Where(c => c.Address.ToLower().Contains(filter));
+            }
+
+            // Sorteer op naam
+            if (nameSort == "desc")
+                customers = customers.OrderByDescending(c => c.Name);
+            else
+                customers = customers.OrderBy(c => c.Name);
+
+            // Voer de query uit en geef de lijst door aan de View
+            return View(await customers.ToListAsync());
         }
+
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
