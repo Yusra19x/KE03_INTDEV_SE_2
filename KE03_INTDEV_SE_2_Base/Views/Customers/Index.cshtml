@@ -8,7 +8,7 @@
 
 <form asp-action="Index" method="get">
     <div style="position: relative;">
-        <button type="button" onclick="toggleDropdown()" style="padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 4px;">Filter</button>
+        <button type="button" onclick="toggleDropdown()" style="padding: 6px 12px; background-color: green; color: white; border: none; border-radius: 4px;">Filter</button>
 
         <div id="filterDropdown" style="display:none; position:absolute; top:40px; left:0; background:#fff; border:1px solid #ccc; padding:15px; z-index:1000; min-width:300px; color: black;">
             <div>
@@ -26,7 +26,7 @@
             </div>
 
             <br />
-            <button type="submit" style="padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 4px;">Toepassen</button>
+            <button type="submit" style="padding: 6px 12px; background-color: green; color: white; border: none; border-radius: 4px;">Toepassen</button>
         </div>
     </div>
 </form>
@@ -48,14 +48,10 @@
     }
 </script>
 
+<a asp-action="Create" class="btn btn-createnew" title="Nieuwe klant">
+    <i class="bi bi-plus-lg"></i> Nieuwe klant
+</a>
 
-<table class="table">
-    ...
-</table>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -83,10 +79,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Active)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="text-end">
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm me-1" title="Details">
+                    <i class="bi bi-info-circle"></i>
+                </a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm me-1" title="Bewerken">
+                    <i class="bi bi-pencil"></i>
+                </a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm" title="Verwijderen">
+                    <i class="bi bi-trash"></i>
+                </a>
             </td>
         </tr>
 }
