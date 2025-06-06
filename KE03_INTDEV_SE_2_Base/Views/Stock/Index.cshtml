@@ -13,10 +13,10 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@(item.StockAmount <= 5 ? "table-danger" : "")">
+            <tr>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
-                <td>
+                <td class="@(item.StockAmount <= 5 ? "text-danger fw-bold" : "")">
                     @Html.Raw(item.StockAmount + (item.StockAmount <= 5 ? "<span class='ms-1 text-danger fw-bold'>(Laag voorraad)</span>" : ""))
                 </td>
             </tr>
