@@ -29,14 +29,7 @@ namespace DataAccessLayer
             };
             context.Customers.AddRange(customers);
 
-            var orders = new Order[]
-            {
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-01-01")},
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[1], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[2], OrderDate = DateTime.Parse("2021-03-01")}
-            };  
-            context.Orders.AddRange(orders);
+          
 
             var products = new Product[]
             {
@@ -48,6 +41,22 @@ namespace DataAccessLayer
             };
             context.Products.AddRange(products);
 
+            var orders = new Order[]
+           {
+                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-01-01") },
+                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-02-01") },
+                new Order { Customer = customers[1], OrderDate = DateTime.Parse("2021-02-01") },
+                new Order { Customer = customers[2], OrderDate = DateTime.Parse("2021-03-01") }
+           };
+
+            // producten koppelen aan orders
+            orders[0].Products.Add(products[0]); // Nebuchadnezzar
+            orders[0].Products.Add(products[1]); // Jack-in Chair
+            orders[1].Products.Add(products[2]); // EMP Blaster
+            orders[2].Products.Add(products[3]); // Red Pill
+            orders[3].Products.Add(products[4]); // Sentinel Drone
+
+            context.Orders.AddRange(orders);
 
             var stockItems = new Stock[]
             {
@@ -57,11 +66,9 @@ namespace DataAccessLayer
                 new Stock { Name = "Red Pill", StockAmount = 100 },
                 new Stock { Name = "Sentinel Drone", StockAmount = 1 }
             };
-
             context.Stock.AddRange(stockItems);
 
             context.SaveChanges();
-
             context.Database.EnsureCreated();
         }
     }
