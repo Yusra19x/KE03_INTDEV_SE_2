@@ -1,3 +1,4 @@
+using System.Globalization;
 using DataAccessLayer;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
@@ -11,9 +12,9 @@ namespace KE03_INTDEV_SE_2_Base
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            // We gebruiken voor nu even een SQLite voor de database,
-            // omdat deze eenvoudig lokaal te gebruiken is en geen extra configuratie nodig heeft.
+            var defaultCulture = new CultureInfo("nl-NL");
+            CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
             builder.Services.AddDbContext<MatrixIncDbContext>(
                 options => options.UseSqlite("Data Source=MatrixInc.db"));
             builder.Services.AddControllersWithViews();
